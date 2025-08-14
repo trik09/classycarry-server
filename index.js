@@ -16,10 +16,16 @@ const categoryRoutes = require("./routes/category");
 const bagRoutes = require("./routes/bagRoutes");
 
 
+// app.use(cors({
+//   origin:  ["http://localhost:3000", "http://localhost:3001"],
+//   credentials: true, 
+// }));
+
 app.use(cors({
-  origin:  ["http://localhost:3000", "http://localhost:3001"],
-  credentials: true, // if you're using cookies or auth headers
+  origin: "*",
+  credentials: true,
 }));
+
 
 app.use(express.json());
 
