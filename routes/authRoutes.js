@@ -1,8 +1,14 @@
-const express = require("express");
-const router = express.Router();
-const { register, login } = require("../controllers/authController");
+const { register, login, getAllUsers, getProfile, updateProfile, logout } = require("../controllers/authController");
+const { protect, adminOnly } = require("../middlewares/authMiddleware");
 
-router.post("/register", register);
-router.post("/login", login);
+const router = require("express").Router();
+
+router.post("/auth/register", register);
+router.post("/auth/login", login);
+router.post("/auth/logout", protect, logout);  // ✅ Logout route
+
+router.get("/auth/users", getAllUsers);
+router.get("/auth/profile", protect, getProfile);
+router.patch("/auth/profile", protect, updateProfile);
 
 module.exports = router;

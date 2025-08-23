@@ -10,10 +10,14 @@ dotenv.config(); // Load .env variables
 const app = express();
 app.use(express.json());
 
+
+
 // Import Routes
 const authRoutes = require("./routes/authRoutes");
 const categoryRoutes = require("./routes/category");
 const bagRoutes = require("./routes/bagRoutes");
+const orderRoutes =  require ( "./routes/orderRoutes.js");
+
 
 
 // app.use(cors({
@@ -33,6 +37,7 @@ app.use(express.json());
 app.use("/api", authRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/bags", bagRoutes);
+app.use("/api/orders", orderRoutes);
 
 // Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI)
